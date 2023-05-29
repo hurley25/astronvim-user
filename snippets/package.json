@@ -7,7 +7,11 @@
       "snippets": [
         {
           "language": "c",
-          "path": "./c.json"
+          "path": "./copyright.json"
+        },
+        {
+          "language": "rust",
+          "path": "./copyright.json"
         }
       ]
     }

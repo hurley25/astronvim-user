@@ -20,8 +20,8 @@ return {
     ["<leader>b"] = { name = "Buffers" },
 
     -- Swap Buffers
-    ["L"] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
     ["H"] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer" },
+    ["L"] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
 
     -- Quick Fix
     ["<F2>"] = { "<cmd>copen<cr>", desc = "open quickfix" },
@@ -60,5 +60,8 @@ return {
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
+
+    -- For terminal clear
+    ["<C-l>"] =false,
   },
 }

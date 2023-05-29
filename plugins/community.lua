@@ -4,7 +4,7 @@ return {
   -- example of imporing a plugin, comment out to use it or add your own
   -- available plugins can be found at https://github.com/AstroNvim/astrocommunity
 
-  { import = "astrocommunity.colorscheme.tokyonight" },
+  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
   { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.code-runner.overseer-nvim" },
   {
@@ -35,7 +35,7 @@ return {
           -- Full path to current file (see :help expand())
             local file = vim.fn.expand("%:p")
             return {
-              cmd = { "clang++", "-g", "-Wall", "-Werror", "-std=c11", "-fsanitize-recover=address" },
+              cmd = { "clang++", "-g", "-Wall", "-Werror", "-std=c++17", "-fsanitize-recover=address" },
               args = { file },
               components = { { "on_output_quickfix", open = true }, "default" },
             }
@@ -61,8 +61,22 @@ return {
             filetype = { "c", "cpp" },
           },
         })
+        overseer.register_template({
+          name = "cargo run",
+          builder = function()
+          -- Full path to current file (see :help expand())
+            return {
+              cmd = { "cargo", "run" },
+              components = { { "on_output_quickfix", open = true }, "default" },
+            }
+          end,
+          condition = {
+            filetype = { "rust" },
+          },
+        })
       end,
   },
+  { import = "astrocommunity.pack.rust" },
 
   -- { import = "astrocommunity.colorscheme.catppuccin" },
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
