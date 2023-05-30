@@ -39,6 +39,10 @@ return {
     underline = true,
   },
 
+  icons = {
+    BufferClose = 'x',
+ },
+
   lsp = {
     -- customize lsp formatting options
     formatting = {

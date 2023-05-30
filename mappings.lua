@@ -23,6 +23,11 @@ return {
     ["H"] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer" },
     ["L"] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
 
+    -- Normal Function keys: F1, F2, F3 ... F12
+    -- Shift + Function keys F13, F14, F15 ... F24
+    -- Control + Function keys: F25, F26, F27 ... F36
+    -- Control + Shift + Function keys: F37, F38, F39 ... F48
+
     -- Quick Fix
     ["<F2>"] = { "<cmd>copen<cr>", desc = "open quickfix" },
     ["<F3>"] = { "<cmd>ccl<cr>", desc = "close quickfix" },
@@ -30,20 +35,20 @@ return {
     -- OverseerRun
     ["<F4>"] = { "<cmd>w!<cr><cmd>OverseerRun<cr>", desc = "OverseerRun" },
 
-    -- Debug Start
-    ["<F5>"] = { function() require("dap").continue() end, desc = "Debugger: Start" },
-    ["<F17>"] = { function() require("dap").terminate() end, desc = "Debugger: Stop" }, -- Shift+F5
-    ["<F29>"] = { function() require("dap").restart_frame() end, desc = "Debugger: Restart" }, -- Control+F5
-    ["<F6>"] = { function() require("dap").pause() end, desc = "Debugger: Pause" },
+    -- Debuger
+    ["<F5>"] = { function() require("dap").toggle_breakpoint() end, desc = "Debugger: Toggle Breakpoint" },
+    ["<F6>"] = { function() require("dap").continue() end, desc = "Debugger: Start" },
+    ["<F18>"] = { function() require("dap").restart_frame() end, desc = "Debugger: Restart" }, -- Shift+F6
+    ["<F7>"] = { function() require("dap").terminate() end, desc = "Debugger: Stop" },
+    ["<F8>"] = { function() require("dap").step_over() end, desc = "Debugger: Step Over" },
+    ["<F9>"] = { function() require("dap").step_into() end, desc = "Debugger: Step Into" },
+    ["<F21>"] = { function() require("dap").step_out() end, desc = "Debugger: Step Out" }, -- Shift+F9
+
+    -- Header/Source File Switch
+    ["<F10>"] = { "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header File" },
 
     -- ToggleTerm
-    ["<F7>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
-
-    -- Debugger
-    ["<F9>"] = { function() require("dap").toggle_breakpoint() end, desc = "Debugger: Toggle Breakpoint" },
-    ["<F10>"] = { function() require("dap").step_over() end, desc = "Debugger: Step Over" },
-    ["<F11>"] = { function() require("dap").step_into() end, desc = "Debugger: Step Into" },
-    ["<F23>"] = { function() require("dap").step_out() end, desc = "Debugger: Step Out" }, -- Shift+F11
+    ["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
 
     -- Split
     ["|"] = { "<cmd>vsp<cr>", desc = "Vertical Split" },
